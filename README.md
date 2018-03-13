@@ -10,10 +10,10 @@ Example: MASTERMIND, AWAKENING.
 
 Then, to encrypt using DIANA (see diana.txt for table), one must find their plaintext letter's row / column and travel across / down to the first key letter and write the corresponding letter.
 Example (using diana.txt): Column A, Row M = N. 
-This is done to every letter, leaving: NJNYTYMAYAAUTJMOBCUISVQNOECRNYKLB
+This is done to every letter, leaving: `NJNYT YMAYA AUTJM OBCUI SVQNO ECRNY KLB`
 
 Then, a columnar transposition using its key is performed, without null characters. 
-This gives us our final result: JUVLAIYTMOACRNASKMBCYUNYOENTQBYJN
+This gives us our final result (put into codegroups): `JUVLA IYTMO ACRNA SKMBC YUNYO ENTQB YJN`
 
 Decryption is this done in the opposite order. As DIANA is reciprocal, encryption is the same as decryption. However, columnar transposition is not.
 
