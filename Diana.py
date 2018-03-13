@@ -4,16 +4,6 @@ from pycipher import ColTrans
 #DKey represents the key for DIANA before being prepared for usage.
 #TKey represents the key for transposition.
 
-class transposition:  
- 
-    def encrypt(self, text, key):
-        return ColTrans(key).encipher(text)
-    def decrypt(self, text, key):
-        return ColTrans(key).decipher(text)
-    def num(self, x):
-        return x+1
-Trans = transposition()
-
 def Diana(text, key):
     return ascii_uppercase[(25 - ord(key) - ord(text)) % 26]
 
@@ -21,7 +11,7 @@ class textmanipulation:
     def CodeGroup(self,text):
         return " ".join("".join(text[i:i+5]) for i in range(0, len(text), 5))
     def PrepareText(self,text):
-        return (" ".join("".join(text[i]) for i in range(0, len(text), 1)).split())
+        return (" ".join("".join(item) for item in text).split())
 TextManip = textmanipulation()
 
 class keygen:
@@ -35,17 +25,15 @@ class keygen:
         UpperKey = PreKey.upper()
         UpperKeyNS = UpperKey.replace(" ","")
         UpperKeyNS = UpperKeyNS.replace("\n","")
-        for TextLength in range(TextLength):
-            output.append(UpperKeyNS)
+        output += [UpperKeyNS] * TextLength
         return "".join(output)[:TextLength+1]
 KeyGen = keygen()
 
 def OnlyAZ(Text):
     Text=Text.upper()
-    ValidLetters="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     NText=""
     for char in Text:
-        if char in ValidLetters:
+        if char in ascii_uppercase:
             NText += char
     return(NText)
 
@@ -55,11 +43,11 @@ def Encrypt(DKey,TKey,Text):
     CipherText=[]
     for x in range(len(Text)):
         CipherText.append(Diana(Text[x],DianaKey[x]))
-    return(Trans.encrypt("".join(CipherText),TKey))
+    return(ColTrans(TKey).encipher("".join(CipherText)))
     
 def Decrypt(DKey,TKey,Text):
     Text=OnlyAZ(Text)
-    Text=Trans.decrypt(Text, TKey)
+    Text=ColTrans(TKey).decipher(Text)
     DianaKey=KeyGen.MakeDianaKey(DKey,Text)
     CipherText=[]
     for x in range(len(Text)):
