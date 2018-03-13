@@ -1,6 +1,9 @@
 from string import ascii_uppercase
 from pycipher import ColTrans
 
+#DKey represents the key for DIANA before being prepared for usage.
+#TKey represents the key for transposition.
+
 class transposition:  
  
     def encrypt(self, text, key):
@@ -46,18 +49,18 @@ def OnlyAZ(Text):
             NText += char
     return(NText)
 
-def Encrypt(Key,Text):
+def Encrypt(DKey,TKey,Text):
     Text=OnlyAZ(Text)
-    DianaKey=KeyGen.MakeDianaKey(Key,Text)
+    DianaKey=KeyGen.MakeDianaKey(DKey,Text)
     CipherText=[]
     for x in range(len(Text)):
         CipherText.append(Diana(Text[x],DianaKey[x]))
-    return(Trans.encrypt("".join(CipherText),Key))
+    return(Trans.encrypt("".join(CipherText),TKey))
     
-def Decrypt(Key,Text):
+def Decrypt(DKey,TKey,Text):
     Text=OnlyAZ(Text)
-    Text=Trans.decrypt(Text, Key)
-    DianaKey=KeyGen.MakeDianaKey(Key,Text)
+    Text=Trans.decrypt(Text, TKey)
+    DianaKey=KeyGen.MakeDianaKey(DKey,Text)
     CipherText=[]
     for x in range(len(Text)):
         CipherText.append(Diana(Text[x],DianaKey[x]))
