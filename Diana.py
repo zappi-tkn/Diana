@@ -1,9 +1,6 @@
 from string import ascii_uppercase
 from pycipher import ColTrans
 
-Text="NOFUCKINGEMILYSTARTEDIT"
-Key="BIZARRE"
-
 class transposition:  
  
     def encrypt(self, text, key):
