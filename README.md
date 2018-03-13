@@ -13,14 +13,14 @@ Example (using diana.txt): Column A, Row M = N.
 This is done to every letter, leaving: `NJNYT YMAYA AUTJM OBCUI SVQNO ECRNY KLB`
 
 Then, a columnar transposition using its key is performed, without null characters. 
-This gives us our final result (put into codegroups): `JUVLA IYTMO ACRNA SKMBC YUNYO ENTQB YJN`
+This gives us our final result (put into codegroups): `NAURN USYTJ QLYCC MOOYT VKYMN BABEJ AIN`
 
 Decryption is this done in the opposite order. As DIANA is reciprocal, encryption is the same as decryption. However, columnar transposition is not.
 
 # Program usage
-Encryption: `Diana.Encrypt("MASTERMIND", "AQUICKBROWNFOXJUMPSOVERTHELAZYDOG")`
+Encryption: `Diana.Encrypt("MASTERMIND","AWAKENING", "AQUICKBROWNFOXJUMPSOVERTHELAZYDOG")`
 
-Decryption: `Diana.Decrypt("MASTERMIND", "JUVLAIYTMOACRNASKMBCYUNYOENTQBYJN")`
+Decryption: `Diana.Decrypt("MASTERMIND","AWAKENING", "NAURNUSYTJQLYCCMOOYTVKYMNBABEJAIN")`
 
 # Prerequisites
 PyCipher (https://pypi.python.org/pypi/pycipher)
