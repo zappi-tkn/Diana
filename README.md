@@ -1,4 +1,5 @@
 # Diana
+The Diana cipher, using both NSA's DIANA OTP system and columnar transposition.
 This employs both diffusion and confusion, strengthing both the polyalphabetic and transposition sections against their own weaknesses.
 
 # Example usage
